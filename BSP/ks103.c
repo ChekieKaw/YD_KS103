@@ -44,9 +44,9 @@ void KS103_WriteOneByte(u8 address, u8 reg, u8 command)
 u16 KS103_GetData(u8 address, u8 reg)
 {
 	u16 data=0;
-	data=KS103_ReadOneByte(address,reg);
+	data=KS103_ReadOneByte(address,0x02);
 	data<<=8;
-	data+=KS103_ReadOneByte(address,reg);
+	data+=KS103_ReadOneByte(address,0x03);
 	return data;
 }
 
@@ -70,7 +70,9 @@ u16 KS103_Demo(u8 address, u8 reg, u8 command)
 {
 	u16 distance=0x0000;
 	KS103_WriteOneByte(address,reg,command);
-	delay_ms(100);
+	delay_ms(2);
+	//delay_ms(100);
+	while(!SCL_read);//enhance detecting rate.
 	distance=KS103_GetData(address,reg);
 	return distance;
 }
