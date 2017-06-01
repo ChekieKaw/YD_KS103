@@ -52,24 +52,18 @@ u16 KS103_GetData(u8 address, u8 reg)
 
 void KS103_SetAddress(u8 oldADD, u8 newADD)
 {
-	delay_ms(1000);
-	I2C_SendByte(oldADD);
-	I2C_SendByte(0x02);
-	I2C_SendByte(0x9a);
+	delay_ms(2000);
+	KS103_WriteOneByte(oldADD,0x02,0x9a);
 	delay_ms(2);
 	
-	I2C_SendByte(oldADD);
-	I2C_SendByte(0x02);
-	I2C_SendByte(0x92);
+	KS103_WriteOneByte(oldADD,0x02,0x92);
 	delay_ms(2);
 	
-	I2C_SendByte(oldADD);
-	I2C_SendByte(0x02);
-	I2C_SendByte(0x9e);
+	KS103_WriteOneByte(oldADD,0x02,0x9e);
 	delay_ms(2);
 	
-	I2C_SendByte(newADD);
-	delay_ms(100);
+	KS103_WriteOneByte(oldADD,0x02,newADD);
+	delay_ms(150);
 }
 
 u16 KS103_Demo(u8 address, u8 reg, u8 command)

@@ -20,6 +20,11 @@
 
 #define KS103_Address 0xd0
 #define detect 0xbc
+#define oldaddress 0xe8
+#define ks103_1_address 0xd0 //done
+#define ks103_2_address 0xd2 //done
+#define ks103_3_address 0xd4 
+#define ks103_4_address 0xd6
 
 //void I2C_Test(void);
 void KS_103_Test(u8 address, u8 command);
@@ -45,13 +50,16 @@ int main(void)
 //    LEDXToggle(LED2);
 //    delay_ms(500);
 //    }
-    while(1)
-	{
-		delay_ms(1000);
-		distance=KS103_Demo(KS103_Address,0x02,detect);
-		//KS_103_Test(KS103_Address,detect);
-		printf("%d",distance);
-	}
+	
+//    while(1)
+//	{
+//		delay_ms(1000);
+//		distance=KS103_Demo(KS103_Address,0x02,detect);
+//		//KS_103_Test(KS103_Address,detect);
+//		printf("%d",distance);
+//	}
+	
+	KS103_SetAddress(oldaddress,ks103_4_address);
 	
 }
 
