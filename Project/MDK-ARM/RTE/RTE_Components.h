@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'I2C_DEMO' 
- * Target:  'I2C_DEMO' 
+ * Target:  'I2C_KS103' 
  */
 
 #ifndef RTE_COMPONENTS_H
